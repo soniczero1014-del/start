@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>股票量化模拟</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">股票量化模拟</p>
+          <h1>股票信息与策略回测</h1>
+        </div>
+        <p class="date-chip">示例数据</p>
+      </header>
+
+      <section class="workspace">
+        <article class="panel stock-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-label">Stock Info</p>
+              <h2>股票信息</h2>
+            </div>
+            <select id="symbol-select" aria-label="选择股票"></select>
+          </div>
+          <div id="stock-info"></div>
+          <div id="mini-chart" class="chart" aria-label="股票走势"></div>
+        </article>
+
+        <article class="panel simulator-panel">
+          <div class="panel-heading">
+            <div>
+              <p class="section-label">Backtest</p>
+              <h2>量化模拟</h2>
+            </div>
+          </div>
+          <form id="simulator-form" class="form">
+            <label>
+              初始资金
+              <input id="initial-capital" type="number" min="1000" step="1000" value="100000" />
+            </label>
+            <label>
+              策略类型
+              <select id="strategy-select">
+                <option value="ma-cross">均线交叉</option>
+                <option value="buy-and-hold">买入并持有</option>
+              </select>
+            </label>
+            <button type="submit">开始模拟</button>
+          </form>
+          <div class="strategy-note">
+            <strong>说明</strong>
+            <span>第一版使用本地示例数据，方便先看页面和策略流程。</span>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel results-panel">
+        <div class="panel-heading">
+          <div>
+            <p class="section-label">Result</p>
+            <h2>模拟结果</h2>
+          </div>
+        </div>
+        <div id="summary" class="summary-grid"></div>
+        <div id="equity-curve" class="chart" aria-label="收益曲线"></div>
+        <div id="trade-log" class="trade-log"></div>
+      </section>
+    </main>
+
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>

@@ -4,7 +4,7 @@
 
 **Goal:** Build a simple single-page stock quant simulation and information website with sample stock data, a basic backtest workflow, and a clean browser-friendly layout.
 
-**Architecture:** The app will be a small static web app with one HTML entry point, one stylesheet, and one JavaScript file. The page will render a stock info panel, a simulator panel, and a results panel. All data will start with local sample data so the page works without external services, but the JavaScript will leave a clear spot for a future market-data adapter.
+**Architecture:** The app will be a small static web app with one HTML entry point, one stylesheet, one browser logic file, and one shared quant logic module. The page will render a stock info panel, a simulator panel, and a results panel. All data will start with local sample data so the page works without external services, and the shared quant module keeps the backtest rules testable before the UI uses them.
 
 **Tech Stack:** HTML, CSS, vanilla JavaScript, local sample data.
 
@@ -74,9 +74,9 @@
         <div id="trade-log"></div>
       </section>
     </main>
-    <script src="./app.js"></script>
+    <script type="module" src="./app.js"></script>
   </body>
- </html>
+</html>
 ```
 
 - [ ] **Step 2: Write the page styles**
@@ -200,6 +200,8 @@ Expected: title, hero, stock panel, simulator panel, and results panel are all v
 
 **Files:**
 - Create: `app.js`
+- Create: `quant.mjs`
+- Create: `tests/quant.test.mjs`
 
 - [ ] **Step 1: Write the sample data and render helpers**
 
@@ -470,6 +472,6 @@ Expected: the page stays usable and the simulator still runs.
 - [ ] **Step 3: Commit the finished work**
 
 ```bash
-git add index.html styles.css app.js docs/superpowers/plans/2026-06-18-stock-quant-web.md
+git add index.html styles.css app.js quant.mjs tests/quant.test.mjs favicon.svg docs/superpowers/plans/2026-06-18-stock-quant-web.md
 git commit -m "feat: build stock quant simulation page"
 ```
